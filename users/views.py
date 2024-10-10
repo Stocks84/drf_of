@@ -1,7 +1,12 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.contrib.auth.models import User
+from rest_framework import serializers, permissions, viewsets
+
+from users.serializers import UserProfileSerializer
 
 # Create your views here.
 
-def users(request):
-    return HttpResponse("Hello Old Fashion!")
+class UserViewSet(viewsets.ModelViewSet):
+
+    queryset = User.objects.all().order_by('-date_joined')
+    serializer_class = UserProfileSerializer
+    permission_classes = [permissions.IsAuthenticated]
