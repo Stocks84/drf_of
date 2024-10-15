@@ -11,3 +11,5 @@ class UserProfileSerializer(serializers.ModelSerializer):
             'date_of_birth', 'date_joined', 'is_active', 'is_staff'
         ]
         read_only_fields = ['date_joined', 'is_active', 'is_staff']
+
+        
