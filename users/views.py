@@ -9,7 +9,7 @@ from users.serializers import UserProfileSerializer
 
 
 @api_view(['GET', 'POST'])
-def user_list(request):
+def user_list(request, format=None):
     """
     List all code user profiles, or create a new profile.
     """
@@ -28,7 +28,7 @@ def user_list(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def user_detail(request, pk):
+def user_detail(request, pk, format=None):
     """
     Retrieve, update or delete a code user profile.
     """
