@@ -18,7 +18,7 @@ def user_list(request):
     if request.method == 'GET':
         users = UserProfile.objects.all()
         serializer = UserProfileSerializer(users, many=True)
-        return JsonResponse(serializer.data, safe=false)
+        return JsonResponse(serializer.data, safe=False)
 
     elif request.method == 'POST':
         data = JSONParser().parse(request)
@@ -54,7 +54,7 @@ def user_detail(request, pk):
     elif request.method == 'DELETE':
         user.delete()
         return HttpResponse(status=204)
-        
+
 # class UserViewSet(viewsets.ModelViewSet):
 
 #     queryset = User.objects.all().order_by('-date_joined')
