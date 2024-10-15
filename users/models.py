@@ -17,6 +17,9 @@ class UserProfile(models.Model):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
 
+    class Meta:
+        ordering = ['date_joined']
+
     # objects = CustomUserManager()
 
     USERNAME_FIELD = 'username'

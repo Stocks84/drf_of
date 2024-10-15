@@ -31,8 +31,7 @@ CSRF_TRUSTED_ORIGINS = [
 ]
 
 
-ALLOWED_HOSTS = ['8000-stocks84-drfof-6c5jvfxbwrb.ws.codeinstitute-ide.net', 
-'https://8000-stocks84-drfof-6c5jvfxbwrb.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-stocks84-drfof-6y7xs8ahjxa.ws.codeinstitute-ide.net']
 
 
 # Application definition
