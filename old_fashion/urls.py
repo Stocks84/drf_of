@@ -25,7 +25,7 @@ router.register(r'likes', LikeViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('api-auth/' include('rest_framework.urls')),
+    path('api-auth/', include('rest_framework.urls')),
     path('api/signup/', SignupView.as_view(),)
 ]
    
