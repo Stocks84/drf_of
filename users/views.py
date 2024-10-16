@@ -1,58 +1,63 @@
 from users.models import UserProfile
 from users.serializers import UserProfileSerializer
-from django.http import Http404 
-from rest_framework.views import APIView 
-from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import generics
+# from django.http import Http404 
+# from rest_framework.views import APIView 
+# from rest_framework.response import Response
+# from rest_framework import status
 # Create your views here.
 
-class UserList(APIView):
-    """
-    List all user profiles, or create a new profile.
-    """
-    def get(self, request, format=None):
-        users = UserProfile.objects.all()
-        serializer = UserProfileSerializer(users, many=True)
-        return Response(serializer.data)
+class UserList(generics.ListCreateAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
 
-    def post (self, request, formant=None):
-        serializer = UserProfileSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+class UserDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = UserProfile.objects.all()
+    serializer_class = UserProfileSerializer
 
 
-class UserDetail(APIView):
-    """
-    Retrieve, update or delete a code user profile.
-    """
-    def get_object(self, pk):
-        try:
-            return UserProfile.objects.get(pk=pk)
-        except UserProfile.DoesNotExist:
-            raise Http404
+# class UserList(APIView):
+#     """
+#     List all user profiles, or create a new profile.
+#     """
+#     def get(self, request, format=None):
+#         users = UserProfile.objects.all()
+#         serializer = UserProfileSerializer(users, many=True)
+#         return Response(serializer.data)
 
-    def get(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = UserProfileSerializer(user)
-        return Response(serializer.data)
+#     def post (self, request, formant=None):
+#         serializer = UserProfileSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def put(self, request, pk, format=None):
-        user = self.get_object(pk)
-        serializer = UserProfileSerializer(user, data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request,pk, format=None):
-        user = self.get_object(pk)
-        user.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+# class UserDetail(APIView):
+#     """
+#     Retrieve, update or delete a code user profile.
+#     """
+#     def get_object(self, pk):
+#         try:
+#             return UserProfile.objects.get(pk=pk)
+#         except UserProfile.DoesNotExist:
+#             raise Http404
 
-# class UserViewSet(viewsets.ModelViewSet):
+#     def get(self, request, pk, format=None):
+#         user = self.get_object(pk)
+#         serializer = UserProfileSerializer(user)
+#         return Response(serializer.data)
 
-#     queryset = User.objects.all().order_by('-date_joined')
-#     serializer_class = UserProfileSerializer
-#     permission_classes = [permissions.IsAuthenticated]
+#     def put(self, request, pk, format=None):
+#         user = self.get_object(pk)
+#         serializer = UserProfileSerializer(user, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    # def delete(self, request,pk, format=None):
+    #     user = self.get_object(pk)
+    #     user.delete()
+    #     return Response(status=status.HTTP_204_NO_CONTENT)
+
