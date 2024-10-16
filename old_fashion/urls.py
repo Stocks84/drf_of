@@ -16,7 +16,6 @@ Including another URLconf
 """
 from django.urls import include, path
 from rest_framework import routers
-
 from users import views
 
 
@@ -24,7 +23,4 @@ from users import views
 # router.register(r'users', views.UserViewSet)
 
 urlpatterns = [
-    path('', include('users.urls')),
-    # path('', include(router.urls)),
-    # path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-]
+   
