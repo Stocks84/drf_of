@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,13 +26,13 @@ SECRET_KEY = 'django-insecure-^#inwvg3!t5db^a(s0^euob3ffx4k@qp9^m55a)9)%d+3+_9!3
 DEBUG = True
 
 
-CSRF_TRUSTED_ORIGINS = ['https://8000-stocks84-drfof-6y7xs8ahjxa.ws.codeinstitute-ide.net']
+CSRF_TRUSTED_ORIGINS = ['https://8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net']
 
 
 LOGIN_REDIRECT_URL = '/api/'  # Or any other path you want
 
 
-ALLOWED_HOSTS = ['8000-stocks84-drfof-6y7xs8ahjxa.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net']
 
 
 # Application definition
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'users',
     'games',
@@ -57,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'old_fashion.urls'
@@ -84,11 +86,12 @@ WSGI_APPLICATION = 'old_fashion.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+    'default': dj_database_url.config(default='postgres://xqsjhhon:HxgZUnJomOweuj0N8RW3ShUnDipcx04u@mel.db.elephantsql.com/xqsjhhon')
     }
-}
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:300",
+]
 
 
 # Password validation
