@@ -32,7 +32,8 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitut
 LOGIN_REDIRECT_URL = '/api/'  # Or any other path you want
 
 
-ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net', 'drf_of.herokuapp.com']
+ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net', 
+'drf-of.herokuapp.com']
 
 
 # Application definition
