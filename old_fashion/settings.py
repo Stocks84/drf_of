@@ -32,8 +32,12 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitut
 LOGIN_REDIRECT_URL = '/api/'  # Or any other path you want
 
 
-ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net', 
-'drf-of.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net',
+    'drf-of.herokuapp.com',
+    'localhost', 
+]
+
 
 
 # Application definition
@@ -92,7 +96,7 @@ DATABASES = {
     }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:300",
+    "http://localhost:3000",
 ]
 
 
