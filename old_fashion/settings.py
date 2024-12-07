@@ -32,7 +32,7 @@ CSRF_TRUSTED_ORIGINS = ['https://8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitut
 LOGIN_REDIRECT_URL = '/api/'  # Or any other path you want
 
 
-ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-stocks84-drfof-xwe46w6xunu.ws.codeinstitute-ide.net', 'drf_of.herokuapp.com']
 
 
 # Application definition
@@ -59,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'old_fashion.urls'
@@ -129,6 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
