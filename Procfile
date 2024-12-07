@@ -1,1 +1,2 @@
-web: gunicorn old_fashion.wsgi:application
+gunicorn drf_of.wsgi:application
+
